@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sbr_db
+    username: root
+    password: # Leave empty or set if you added a password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create # Auto-create tables # Moved under "properties" (standard Hibernate config)
