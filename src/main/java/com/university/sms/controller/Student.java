@@ -24,7 +24,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
-    private String LastName;
+    private String lastName;
     @NaturalId(mutable = true)
     private String email;
     private String department;

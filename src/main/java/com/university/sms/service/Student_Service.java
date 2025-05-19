@@ -18,13 +18,7 @@ public class Student_Service implements IStudent_Service{
 
 private final Student_Repository student_Repository;
 
-@Override
-public List<Student> getStudents() {
-    return student_Repository.findAll();
-    
-}
-
-    @Override
+ @Override
     public Student addStudent(Student student) {
 
         if(studentAlreadyExists(student.getEmail())){
@@ -33,6 +27,13 @@ public List<Student> getStudents() {
         
         return student_Repository.save(student);
     }
+@Override
+public List<Student> getStudents() {
+    return student_Repository.findAll();
+    
+}
+
+   
     
     @Override
     public Student updateStudent(Student student, long id) {
@@ -57,6 +58,8 @@ public List<Student> getStudents() {
     public void deleteStudent(long id) {
         if(!student_Repository.existsById(id)){
             throw new StudentNotFoundException("Student not found");
+        }else{
+            student_Repository.deleteById(id);
         }
     }
 

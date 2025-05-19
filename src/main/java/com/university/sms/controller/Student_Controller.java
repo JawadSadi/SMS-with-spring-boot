@@ -22,15 +22,19 @@ import lombok.RequiredArgsConstructor;
 public class Student_Controller {
    private final IStudent_Service student_Service;
 
-   @GetMapping
-   public ResponseEntity<List<Student>> getStudents(){
-    return new ResponseEntity<>(student_Service.getStudents(),HttpStatus.FOUND);
-   }
+
 
    @PostMapping
    public Student addStudent(@RequestBody Student student){
       return student_Service.addStudent(student);
    }
+
+   @GetMapping
+   public ResponseEntity<List<Student>> getStudents(){
+    return new ResponseEntity<>(student_Service.getStudents(),HttpStatus.FOUND);
+   }
+
+   
 
    @PutMapping("/update/{id}")
    public Student updatStudent(@RequestBody Student student,@PathVariable Long id){
@@ -39,7 +43,7 @@ public class Student_Controller {
 
    @DeleteMapping("/delete/{id}")
    public void  deleteStudent(@PathVariable Long id){
-      student_Service.deleteStudent(id);
+       student_Service.deleteStudent(id);
    }
 
    @GetMapping("/student/{id}")
