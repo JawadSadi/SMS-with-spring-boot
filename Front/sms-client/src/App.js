@@ -5,6 +5,7 @@ import Home from "./Home";
 import StudentsView from "./components/student/StudentsView";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./common/NavBar";
+import AddStudent from "./components/student/AddStudent";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/view-students" element={<StudentsView />} />
+          <Route exact path="/add-students" element={<AddStudent />} />
         </Routes>
       </Router>
     </main>
