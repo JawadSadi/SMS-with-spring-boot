@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { FaEdit, FaEye, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const StudentsView = () => {
   const [students, setStudents] = useState([]);
@@ -21,30 +23,48 @@ const StudentsView = () => {
 
   return (
     <div>
-      <table>
+      <table className="table table-bordered table-hover">
         <thead>
-          <tr>
+          <tr className="text-center">
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Department</th>
-            <th>Actions</th>
+            <th colSpan="3">Actions</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student, index) => (
-            <tr key={student.id}>
+            <tr key={student.id} className="text-center">
               <th scope="row" key={index}>
                 {index + 1}
               </th>
-              <td>{student.name}</td>
+              <td>{student.firstName}</td>
               <td>{student.lastName}</td>
               <td>{student.email}</td>
               <td>{student.department}</td>
-              <td>View</td>
-              <td>Update</td>
-              <td>Delete</td>
+              <td className="mx-2">
+                <Link
+                  className="btn btn-info"
+                  to={`/student-profile/${student.id}`}
+                >
+                  <FaEye />
+                </Link>
+              </td>
+              <td className="mx-2">
+                <Link
+                  className="btn btn-warning"
+                  to={`/edit-student/${student.id}`}
+                >
+                  <FaEdit />
+                </Link>
+              </td>
+              <td className="mx-2">
+                <button className="btn btn-danger">
+                  <FaTrashAlt />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
